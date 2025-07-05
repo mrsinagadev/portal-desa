@@ -82,6 +82,3 @@ Demo Login :
     - email     : admin@gmail.com
     - password  : 1234
 
-
-Demo Video : https://youtu.be/wY13QzFiipY?si=PE2Bx0N6XvA3q8de
-
