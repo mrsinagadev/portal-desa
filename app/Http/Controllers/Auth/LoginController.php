@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -41,8 +42,15 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        alert()->toast('Anda Login Sebagai ' .$user->name, 'success');
+        alert()->toast('Anda Login Sebagai ' . $user->name, 'success');
 
         return redirect($this->redirectTo);
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => ['Email atau password yang Anda masukkan salah.'],
+        ]);
     }
 }

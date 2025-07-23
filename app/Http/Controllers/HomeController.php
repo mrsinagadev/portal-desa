@@ -33,6 +33,7 @@ class HomeController extends Controller
         $query = Berita::whereDate('updated_at', $today)->get();
         $viewsToday = $query->sum('views');
 
+
         $totalBerita    = Berita::count();
         $totalProduk    = Umkm::count();
         $beritas        = Berita::orderBy('created_at', 'DESC')->take(10)->get();
@@ -46,5 +47,4 @@ class HomeController extends Controller
             'komentars'      => $komentars
         ]);
     }
-
 }

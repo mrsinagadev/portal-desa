@@ -28,6 +28,4 @@ class BeritaController extends Controller
             'kategories'    => Kategori::all(),
         ]);
     }
-
-    
 }

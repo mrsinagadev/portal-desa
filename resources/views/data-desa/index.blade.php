@@ -68,10 +68,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataJenisKelamins as $dataJenisKelamins)
+                                @foreach ($dataJenisKelamins as $dataJenisKelamin)
                                 <tr>
-                                    <td>{{ $dataJenisKelamins->jenis_kelamin }}</td>
-                                    <td>{{ $dataJenisKelamins->jumlah }}</td>
+                                    <td>{{ $dataJenisKelamin->jenis_kelamin }}</td>
+                                    <td>{{ $dataJenisKelamin->jumlah }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -152,11 +152,11 @@
   
 
   <script>
+    // Chart Agama (tetap bar chart vertikal)
     const ctxAgama = document.getElementById('agamaChart');
-    
     const labels = {!! $labels !!};
     const dataPenganut = {!! $dataPenganut !!};
-    
+
     new Chart(ctxAgama, {
       type: 'bar',
       data: {
@@ -165,37 +165,39 @@
           label: 'Penganut Agama',
           data: dataPenganut,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 205, 86, 0.7)',
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(153, 102, 255, 0.7)',
+            'rgba(255, 159, 64, 0.7)',
+            'rgba(201, 203, 207, 0.7)'
           ],
           borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
             'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(255, 99, 132)',
+            'rgb(75, 192, 192)',
             'rgb(153, 102, 255)',
+            'rgb(255, 159, 64)',
             'rgb(201, 203, 207)'
           ],
           borderWidth: 1
         }]
       },
       options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: false }
+        },
         scales: {
-          y: {
-            beginAtZero: true
-          }
+          y: { beginAtZero: true }
         }
       }
     });
-  </script>
-  
-  <script>
+
+    // Chart Jenis Kelamin (pie chart)
     const ctxJenisKelamin = document.getElementById('jenisKelaminChart');
     const labelsJenisKelamin = {!! $labelsJenisKelamin !!};
     const jumlah = {!! $jumlah !!};
@@ -208,37 +210,75 @@
                 label: 'Jumlah Jenis Kelamin',
                 data: jumlah,
                 backgroundColor: [
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 99, 132)',
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 99, 132, 0.7)'
                 ],
-                hoverOffset: 4
+                borderColor: [
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 99, 132)'
+                ],
+                borderWidth: 1,
+                hoverOffset: 8
             }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                font: { size: 14 }
+              }
+            }
+          }
         }
     });
-</script>
 
-<script>
+    // Chart Pekerjaan (horizontal bar chart)
     const ctxPekerjaan = document.getElementById('pekerjaanChart');
-    
     const labelPekerjaan  = {!! $labelPekerjaan !!};
     const dataPekerjaan   = {!! $jumlahPekerjaan !!};
 
     new Chart(ctxPekerjaan, {
-        type: 'polarArea',
+        type: 'bar',
         data: {
             labels: labelPekerjaan,
             datasets: [{
                 label: 'Jumlah Pekerjaan',
                 data: dataPekerjaan,
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(75, 192, 192)',
-                    'rgb(255, 205, 86)',
-                    'rgb(201, 203, 207)',
-                    'rgb(54, 162, 235)'
-                ],
-                hoverOffset: 4
+                backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 1
             }]
+        },
+        options: {
+            indexAxis: 'y', // horizontal bar
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: { display: false },
+                tooltip: {
+                  callbacks: {
+                    label: function(context) {
+                      return `${context.label}: ${context.parsed.x} orang`;
+                    }
+                  }
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Jumlah Orang'
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: { size: 13 }
+                    }
+                }
+            }
         }
     });
 </script>

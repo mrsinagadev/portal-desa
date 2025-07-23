@@ -46,17 +46,17 @@ class AdminPerangkatDesaController extends Controller
             'foto.mimes'        => 'Format gambar yang di izinkan Jpeg, Jpg, Png',
         ]);
 
-        if($request->hasFile('foto')){
+        if ($request->hasFile('foto')) {
             $path       = 'img-perangkat/';
             $file       = $request->file('foto');
             $extension  = $file->getClientOriginalExtension();
-            $fileName   = uniqid(). '.' . $extension;
+            $fileName   = uniqid() . '.' . $extension;
             $foto       = $file->storeAs($path, $fileName, 'public');
         } else {
             $foto       = null;
         }
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect('/admin/perangkat-desa/create')
                 ->withErrors($validator)
                 ->withInput();
@@ -96,21 +96,21 @@ class AdminPerangkatDesaController extends Controller
             'jabatan.required'  => 'Wajib menambahkan jabatan perangkat desa !',
         ]);
 
-        if($request->hasFile('foto')){
-            if($perangkatDesa->foto){
-                unlink('.' .Storage::url($perangkatDesa->foto));
+        if ($request->hasFile('foto')) {
+            if ($perangkatDesa->foto) {
+                unlink('.' . Storage::url($perangkatDesa->foto));
             }
             $path       = 'img-perangkat/';
             $file       = $request->file('foto');
-            $extension  = $file->getClientOriginalExtension(); 
-            $fileName   = uniqid() . '.' . $extension; 
+            $extension  = $file->getClientOriginalExtension();
+            $fileName   = uniqid() . '.' . $extension;
             $foto       = $file->storeAs($path, $fileName, 'public');
         } else {
             $validator = Validator::make($request->all(), [
                 'nama'      => 'required',
                 'jabatan'   => 'required',
             ], [
-    
+
                 'nama.required'     => 'Wajib menambahkan nama perangkat desa !',
                 'jabatan.required'  => 'Wajib menambahkan jabatan perangkat desa !',
             ]);
@@ -131,7 +131,6 @@ class AdminPerangkatDesaController extends Controller
         ]);
 
         return redirect('/admin/perangkat-desa')->with('success', 'Berhasil memperbarui data perangkat desa');
-
     }
 
     /**
@@ -139,7 +138,9 @@ class AdminPerangkatDesaController extends Controller
      */
     public function destroy(PerangkatDesa $perangkatDesa)
     {
-        unlink('.'.Storage::url($perangkatDesa->foto));
+        if ($perangkatDesa->foto && Storage::disk('public')->exists($perangkatDesa->foto)) {
+            Storage::disk('public')->delete($perangkatDesa->foto);
+        }
         $perangkatDesa->delete();
 
         return redirect('/admin/perangkat-desa')->with('success', 'Berhasil menghapus data perangkat desa');

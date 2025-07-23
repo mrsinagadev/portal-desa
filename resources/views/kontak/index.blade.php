@@ -36,6 +36,14 @@
                       <p>{{ $kontak->no_hp }}</p>
                     </div>
                   </div>
+
+                  <div class="info-box" style="height: 250px;"> <!-- Ubah tinggi sesuai kebutuhan -->
+                    <div class="mx-auto pt-4">
+                      <i class="bx bx-phone-call"></i>
+                      <h3>Nomor Ambulance</h3>
+                      <p>081234567890</p>
+                    </div>
+                  </div>
                 </div>
 
               </div>

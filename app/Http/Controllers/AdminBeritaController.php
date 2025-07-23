@@ -23,9 +23,8 @@ class AdminBeritaController extends Controller
             'beritas'     => Berita::where('status_id', 2)->with(['user', 'status'])
                 ->orderBy('id', 'DESC')->get(),
             'beritaDraft' => Berita::where('status_id', 1)->with(['user', 'status'])
-                ->orderBy('id', 'DESC')->get(),       
+                ->orderBy('id', 'DESC')->get(),
         ]);
-
     }
 
     /**
@@ -51,7 +50,7 @@ class AdminBeritaController extends Controller
             'body'          => 'required',
             'kategori_id'   => 'required',
             'status_id'     => 'required'
-        ],[
+        ], [
             'gambar.required'       => 'Wajib menambahkan gambar !',
             'gambar.mimes'          => 'Format gambar yang di izinkan Jpeg, Jpg, Png',
             'judul.required'        => 'Wajib menambahkan judul !',
@@ -62,11 +61,11 @@ class AdminBeritaController extends Controller
             'status_id.required'    => 'Wajib memilih status berita !'
         ]);
 
-        if($request->hasFile('gambar')){
+        if ($request->hasFile('gambar')) {
             $path       = 'img-berita/';
             $file       = $request->file('gambar');
-            $extension  = $file->getClientOriginalExtension(); 
-            $fileName   = uniqid() . '.' . $extension; 
+            $extension  = $file->getClientOriginalExtension();
+            $fileName   = uniqid() . '.' . $extension;
             $gambar     = $file->storeAs($path, $fileName, 'public');
         } else {
             $gambar     = null;
@@ -118,7 +117,7 @@ class AdminBeritaController extends Controller
             'body'          => 'required',
             'kategori_id'   => 'required',
             'status_id'     => 'required'
-        ],[
+        ], [
             'judul.required'        => 'Wajib menambahkan judul !',
             'slug.required'         => 'Wajib menambahkan slug !',
             'body.required'         => 'Wajib menambahkan isi berita !',
@@ -126,18 +125,18 @@ class AdminBeritaController extends Controller
             'status_id.required'    => 'Wajib memilih status berita !'
         ]);
 
-        if($request->slug != $berita->slug){
+        if ($request->slug != $berita->slug) {
             $berita->slug  = 'required|unique:beritas';
         }
 
-        if($request->hasFile('gambar')){
-            if($berita->gambar){
-                unlink('.' .Storage::url($berita->gambar));
+        if ($request->hasFile('gambar')) {
+            if ($berita->gambar) {
+                unlink('.' . Storage::url($berita->gambar));
             }
             $path       = 'img-berita/';
             $file       = $request->file('gambar');
-            $extension  = $file->getClientOriginalExtension(); 
-            $fileName   = uniqid() . '.' . $extension; 
+            $extension  = $file->getClientOriginalExtension();
+            $fileName   = uniqid() . '.' . $extension;
             $gambar     = $file->storeAs($path, $fileName, 'public');
         } else {
             $validator = Validator::make($request->all(), [
@@ -146,7 +145,7 @@ class AdminBeritaController extends Controller
                 'body'          => 'required',
                 'kategori_id'   => 'required',
                 'status_id'     => 'required'
-            ],[
+            ], [
                 'judul.required'        => 'Wajib menambahkan judul !',
                 'slug.required'         => 'Wajib menambahkan slug !',
                 'body.required'         => 'Wajib menambahkan isi berita !',
@@ -174,7 +173,7 @@ class AdminBeritaController extends Controller
 
         return redirect('/admin/berita')->with('success', 'Berhasil memperbarui berita');
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -182,7 +181,7 @@ class AdminBeritaController extends Controller
     public function destroy($id)
     {
         $berita = Berita::find($id);
-        unlink('.'.Storage::url($berita->gambar));
+        unlink('.' . Storage::url($berita->gambar));
         $berita->delete();
 
         return redirect('/admin/berita')->with('success', 'Berhasil menghapus berita');

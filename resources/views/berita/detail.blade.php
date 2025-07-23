@@ -38,7 +38,7 @@
                                             @foreach ($berita->comments as $comment)
                                                 @php
                                                     $emailHash = md5(strtolower(trim($comment->email)));
-                                                    $avatarUrl = "https://www.gravatar.com/avatar/{$emailHash}?s=65";
+                                                    $avatarUrl = "https://robohash.org/{$emailHash}?s=65";
                                                 @endphp
 
                                                 <div class="comment-container mb-4 d-flex align-items-start">
@@ -59,7 +59,7 @@
                                                 @foreach ($comment->replies as $reply)
                                                     @php
                                                         $replyEmailHash = md5(strtolower(trim($reply->email)));
-                                                        $replyAvatarUrl = "https://www.gravatar.com/avatar/{$replyEmailHash}?s=65";
+                                                        $replyAvatarUrl = "https://robohash.org/{$replyEmailHash}?s=65";
                                                     @endphp
                                                     <div class="comment-container my-4 ms-5 d-flex align-items-start">
                                                         <div class="comment-avatar me-3">
