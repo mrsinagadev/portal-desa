@@ -1,18 +1,28 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="counts section-bg">
+<section class="py-5 bg-light">
     <div class="container">
-  
-      <div class="section-title">
-        <h2>{{ $sejarah->judul }}</h2>
-      </div>
-  
-      <div class="row">
-        <div class="col-lg-10 mx-auto p-3">
-            {!!  $sejarah->body !!}
+
+        <!-- Section Title -->
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-dark">{{ $sejarah->judul }}</h2>
+            <div class="mx-auto" style="width: 80px; height: 4px; background-color: #0d6efd; border-radius: 2px;"></div>
         </div>
-      </div>
+
+        <!-- Content Card -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-body p-4 p-md-5">
+                        <article class="fs-5 lh-lg text-secondary" style="text-align: justify;">
+                            {!! $sejarah->body !!}
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </section>
+</section>
 @endsection

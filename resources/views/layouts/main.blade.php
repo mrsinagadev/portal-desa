@@ -17,6 +17,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
 
     <!-- Vendor CSS Files -->
     <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -50,8 +52,47 @@
             font-weight: 700;
             letter-spacing: 0.5px;
         }
+
+        .transition-hover {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .transition-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            background-color: #1d2520;
+            color: #e0e0e0;
+        }
+
+        .footer-custom {
+            background: linear-gradient(to right, #2e3d32, #1d2520);
+            /* hijau gelap ke abu gelap */
+            font-family: 'Segoe UI', 'Poppins', sans-serif;
+        }
+
+        .footer-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .footer-link:hover {
+            color: #ffd54f;
+        }
+
+        .footer-top h5,
+        .footer-top h4 {
+            font-weight: 600;
+            color: #ffd54f;
+            /* kuning lemon */
+        }
     </style>
     <!-- ...existing code... -->
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>

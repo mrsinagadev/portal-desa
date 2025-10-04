@@ -4,8 +4,9 @@
     <section class="counts section-bg">
         <div class="container">
 
-            <div class="section-title">
-                <h2>Perangkat Desa Pujimulyo</h2>
+            <div class="section-title text-center mb-2">
+                <h2 class="fw-bold text-dark">Perangkat Desa</h2>
+                <div class="mx-auto" style="width: 80px; height: 4px; background-color: #0d6efd; border-radius: 2px;"></div>
             </div>
 
             <div class="row">
@@ -23,13 +24,10 @@
                                 <p class="card-title mb-1 fw-bold">{{ $perangkat->nama }}</p>
                                 <p class="card-text text-muted small">{{ $perangkat->jabatan }}</p>
                             </div>
-
                         </div>
                     </div>
                 @endforeach
             </div>
-
-
         </div>
     </section>
 @endsection

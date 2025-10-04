@@ -5,6 +5,7 @@
     <div class="container">
         <div class="section-title">
             <h2>UMKM Desa</h2>
+            <div class="mx-auto" style="width: 80px; height: 4px; background-color: #0d6efd; border-radius: 2px;"></div>
         </div>
         <div class="row">
             @foreach ($umkms as $umkm)

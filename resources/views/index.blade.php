@@ -32,20 +32,24 @@
 
             <div class="row">
                 <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up">
-                    <div class="icon"><i class="bi bi-bar-chart-line-fill"></i></div>
-                    <h4 class="title"><a href="/data-desa">Statistik</a></h4>
+                    <a href="/data-desa" class="icon-link">
+                        <div class="icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up">
-                    <div class="icon"><i class="bi bi-globe-asia-australia"></i></div>
-                    <h4 class="title"><a href="/peta-desa">Peta Desa</a></h4>
+                    <a href="/peta-desa" class="icon-link">
+                        <div class="icon"><i class="bi bi-globe-asia-australia"></i></div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up">
-                    <div class="icon"><i class="bi bi-shop"></i></div>
-                    <h4 class="title"><a href="/umkm">UMKM Desa</a></h4>
+                    <a href="/umkm" class="icon-link">
+                        <div class="icon"><i class="bi bi-shop"></i></div>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 icon-box" data-aos="fade-up">
-                    <div class="icon"><i class="bi bi-telephone-forward"></i></div>
-                    <h4 class="title"><a href="/kontak">Pengaduan</a></h4>
+                    <a href="/kontak" class="icon-link">
+                        <div class="icon"><i class="bi bi-telephone-forward"></i></div>
+                    </a>
                 </div>
             </div>
 
@@ -103,8 +107,8 @@
                                     <div class="news-date">{{ $berita->created_at->diffForHumans() }}</div>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="/berita/{{ $berita->slug }}" type="button"
-                                        class="btn btn-link float-end">Selengkapnya</a>
+                                    <a href="/berita/{{ $berita->slug }}"
+                                        class="badge bg-success text-decoration-none float-end p-2">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +129,7 @@
     <section id="services" class="services mx-4">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
-                <h2>Video Profile</h2>
+                <h2>Video Profil</h2>
             </div>
 
             <div class="row">
@@ -136,4 +140,25 @@
             </div>
         </div>
     </section>
+    <style>
+.icon-link {
+    display: block;
+    text-align: center;
+    transition: transform 0.2s;
+}
+.icon-link .icon {
+    font-size: 3rem;
+    color: #007bff;
+    background: #f8f9fa;
+    border-radius: 50%;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,123,255,0.08);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.icon-link:hover .icon {
+    background: linear-gradient(90deg, #00c6ff 0%, #ffd54f 100%);
+    color: #fff;
+    transform: scale(1.08) rotate(-6deg);
+}
+</style>
 @endsection

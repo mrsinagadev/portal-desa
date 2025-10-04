@@ -84,6 +84,16 @@ Route::get('/layanan', [LayananController::class, 'index']);
 
 Route::get('/gallery', [GalleryController::class, 'index']);
 
+Route::get('/posyandu', function () {
+    return view('informasi.posyandu');
+});
+Route::get('/bumdes', function () {
+    return view('informasi.bumdes');
+});
+Route::get('/pkk', function () {
+    return view('informasi.pkk');
+});
+
 Route::get('/pengumuman', [AnnouncementController::class, 'index']);
 Route::get('/pengumuman/{pengumuman:slug}', [AnnouncementController::class, 'detail']);
 

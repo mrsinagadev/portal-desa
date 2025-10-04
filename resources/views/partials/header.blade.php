@@ -11,7 +11,7 @@
 
         <nav id="navbar" class="navbar">
             <ul class="fw-bold">
-                <li><a class="nav-link scrollto active" href="/">Beranda</a></li>
+                <li><a class="nav-link scrollto" href="/">Beranda</a></li>
                 <li class="dropdown"><a href="#"><span>Profil Desa</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/wilayah">Wilayah</a></li>
@@ -28,14 +28,17 @@
                         <li><a href="/berita">Berita</a></li>
                         <li><a href="/gallery">Gallery</a></li>
                         <li><a href="/apbdesa">APBDesa</a></li>
+                        <li><a href="/posyandu">Posyandu</a></li>
+                        <li><a href="/bumdes">Bumdes</a></li>
+                        <li><a href="/pkk">PKK</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="/umkm">Umkm</a></li>
                 <li><a class="nav-link scrollto" href="/layanan">Layanan</a></li>
                 <li><a class="nav-link scrollto" href="/kontak">Kontak kami</a></li>
-                <li>
+                {{-- <li>
                     <a href="/login" class="nav-link scrollto">Masuk</a>
-                </li>
+                </li> --}}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

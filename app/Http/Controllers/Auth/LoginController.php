@@ -52,5 +52,5 @@ class LoginController extends Controller
         throw ValidationException::withMessages([
             $this->username() => ['Email atau password yang Anda masukkan salah.'],
         ]);
-    }
+    } 
 }
